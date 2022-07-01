@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Facebook Login JavaScript Example</title>
+  <meta charset="UTF-8">
+</head>
+
+<body>
+
+  <script src="require.js"></script>
+
+  <h3>create once deploy everywhere demo page</h3>
+
+
+  <!-- The JS SDK Login Button -->
+
+  <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+  </fb:login-button>
+
+  <div id="status">
+  </div>
+
+  <!-- <button onclick="postTest()">Post</button> -->
+
+  <div id="response">
+
+  </div>
+
+  <div id="imageInput">
+    <div class="imageField">
+      <h4>Image upload area</h4>
+      <label for='image_url'>Image Url : </label>
+      <input type='text' id='image_url' class='images_url'>
+    </div>
+  </div>
+  <br>
+  <button onclick="addImageField()">add another image</button>
+  <button onclick="postImages()">upload images</button>
+  <div id="uploadedFacebookImageId"> 
+    <h4>facebook</h4>
+  </div>
+  <div id="uploadedInstaImageId">
+    <h4>instagram</h4>
+  </div>
+  <br>
+  <br>
+  <h4>posting area</h4>
+  <div id="facebookImages">
+    <div class="imageField">
+      <h4>Facebook images</h4>
+      <label for='image_url'>Image Id : </label>
+      <input type='text' id='image_url' class='images_url'>
+    </div>
+  </div>
+  <div class="imageField">
+    <h4>instagram images</h4>
+    <label for='image_url'>Image Id : </label>
+    <input type='text' id='image_url' class='images_url'>
+  </div>
+
+  <br>
+  <br>
+  <label for="description">Description : </label>
+  <input type="text" name="" id="description">
+  <br>
+  <br>
+  <div>Post to : </div>
+  <input type="button" value="facebook page" onclick="postToFbPage()">
+  <input type="button" value="facebook group">
+  <input type="button" value="instagram">
+  <input type="button" value="telegram">
+
+  <br>
+  <br>
+  <div id="imageCollection">
+    <h3>Image Collection</h3>
+    <span> jpeg</span><img src="reference/download.jpeg" alt="" height="200" width="200">
+    <!-- <span>png</span><img src="reference/blender-axum.png" alt="" height="200" width="200"> -->
+    <span>jpg</span><img src="reference/axumWgrad.jpg" alt="" height="200" width="200">
+    <span>png</span><img src="reference/anatomy.png" alt="" height="200" width="200">
+    <span>jpg</span><img src="reference/aksum_obelisk_8372.jpg" alt="" height="200" width="200">
+  </div>
+
+  <!-- Load the JS SDK asynchronously -->
+  <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
+
+  <script src="ui.js"></script>
+
+
+</body>
+
+</html>
