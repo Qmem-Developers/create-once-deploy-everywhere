@@ -2,85 +2,137 @@
 <html>
 
 <head>
-  <title>Facebook Login JavaScript Example</title>
-  <meta charset="UTF-8">
+  <title>Social Media Api Demo</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+
 </head>
 
 <body>
+  <script src="index.js"></script>
+  <div class="h1 text-center">Social Media Api Demo</div>
 
-  <script src="require.js"></script>
-
-  <h3>create once deploy everywhere demo page</h3>
-
-
-  <!-- The JS SDK Login Button -->
-
-  <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
-  </fb:login-button>
-
-  <div id="status">
-  </div>
-
-  <!-- <button onclick="postTest()">Post</button> -->
-
-  <div id="response">
+  <!-- image collection display -->
+  <div id="imageCollection" class="container-fluid bg-info">
+    <h3>Image Collection</h3>
+    <span class="h4"> jpeg-</span><img src="reference/download.jpeg" alt="" height="200" width="200">
+    <!-- <span>png</span><img src="reference/blender-axum.png" alt="" height="200" width="200"> -->
+    <span class="h4"> jpg-</span><img src="reference/axumWgrad.jpg" alt="" height="200" width="200">
+    <span class="h4"> png-</span><img src="reference/anatomy.png" alt="" height="200" width="200">
+    <span class="h4"> jpg-</span><img src="reference/aksum_obelisk_8372.jpg" alt="" height="200" width="200">
 
   </div>
+  <br>
 
-  <div id="imageInput">
+  <!-- login -->
+  <div class="container-fluid bg-info text-center">
+    <!-- The JS SDK Login Button -->
+    <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+    </fb:login-button>
+
+    <div id="status">
+    </div>
+
+  </div>
+
+  <div class="h1 text-center">Create Post</div>
+  <!-- image upload -->
+  <div id="imageInput" class="container-fluid bg-info ">
     <div class="imageField">
-      <h4>Image upload area</h4>
+      <h4 class="h2">Image upload</h4>
       <label for='image_url'>Image Url : </label>
       <input type='text' id='image_url' class='images_url'>
     </div>
+    <button onclick="addImageField()">add another image</button>
+    <button onclick="uploadImages()">upload images</button>
   </div>
   <br>
-  <button onclick="addImageField()">add another image</button>
-  <button onclick="postImages()">upload images</button>
-  <div id="uploadedFacebookImageId"> 
-    <h4>facebook</h4>
-  </div>
-  <div id="uploadedInstaImageId">
-    <h4>instagram</h4>
+
+  <!-- image upload response display -->
+  <div class="container-fluid bg-info">
+    <div class="h2">Upload response</div>
+    <div id="uploadedFacebookImageId" class="container-fluid bg-info">
+      <h4>facebook</h4>
+    </div>
+    <div id="uploadedInstagramImageId" class="container-fluid bg-info">
+      <h4>instagram</h4>
+    </div>
   </div>
   <br>
-  <br>
-  <h4>posting area</h4>
-  <div id="facebookImages">
+
+
+  <!-- container creating -->
+  <div id="igImagesContainer" class="container-fluid bg-info">
+    <div class="h2">Container for images<sup class="text-danger h6"> *instagram only</sup></div>
     <div class="imageField">
-      <h4>Facebook images</h4>
+      <h4>instagram</h4>
       <label for='image_url'>Image Id : </label>
       <input type='text' id='image_url' class='images_url'>
     </div>
+    <input type="button" value="create container" onclick="createImageContainer()">
   </div>
-  <div class="imageField">
-    <h4>instagram images</h4>
-    <label for='image_url'>Image Id : </label>
-    <input type='text' id='image_url' class='images_url'>
+  <br>
+
+  <!-- container creating response -->
+  <div class="container-fluid bg-info">
+    <div class="h2">Container creation response</div>
+    <div id="containerCreationResponse"></div>
+  </div>
+  <br>
+  <br>
+
+  <!-- publishing post -->
+  <div class="container-fluid bg-info">
+    <h4 class="h2">Publish</h4>
+    <div id="facebookImages">
+      <div class="imageField">
+        <h4>facebook</h4>
+        <label for='image_url'>Image Id : </label>
+        <input type='text' id='image_url' class='images_url'>
+      </div>
+    </div>
+    <br>
+    <div class="">
+      <h4>instagram</h4>
+      <label for='imgContainerId'>Container Id : </label>
+      <input type='text' id='imgContainerId' class='images_url'>
+    </div>
+
+    <br>
+    <br>
+    <label for="description">Description : </label>
+    <input type="text" name="" id="description">
+    <br>
+    <br>
+    <div>Post to : </div>
+    <input type="button" value="facebook page" onclick="postToFbPage()">
+    <input type="button" value="facebook group">
+    <input type="button" value="instagram" onclick="postToInsta()">
+    <input type="button" value="telegram">
+  </div>
+  <br>
+  <br>
+
+  <!-- publish response display -->
+  <div id="publishResponse" class="container-fluid bg-info">
+    <div class="h2">Publish response</div>
+    <div id="facebookPublishResponse">
+      <h4>facebook</h4>
+
+    </div>
+    <br>
+    <div id="instagramPublishResponse">
+      <h4>instagram</h4>
+    </div>
   </div>
 
-  <br>
-  <br>
-  <label for="description">Description : </label>
-  <input type="text" name="" id="description">
-  <br>
-  <br>
-  <div>Post to : </div>
-  <input type="button" value="facebook page" onclick="postToFbPage()">
-  <input type="button" value="facebook group">
-  <input type="button" value="instagram">
-  <input type="button" value="telegram">
+  <div class="h1 text-center">Edit Post</div>
 
-  <br>
-  <br>
-  <div id="imageCollection">
-    <h3>Image Collection</h3>
-    <span> jpeg</span><img src="reference/download.jpeg" alt="" height="200" width="200">
-    <!-- <span>png</span><img src="reference/blender-axum.png" alt="" height="200" width="200"> -->
-    <span>jpg</span><img src="reference/axumWgrad.jpg" alt="" height="200" width="200">
-    <span>png</span><img src="reference/anatomy.png" alt="" height="200" width="200">
-    <span>jpg</span><img src="reference/aksum_obelisk_8372.jpg" alt="" height="200" width="200">
-  </div>
+
+  <div class="h1 text-center">Delete Post</div>
+
 
   <!-- Load the JS SDK asynchronously -->
   <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>

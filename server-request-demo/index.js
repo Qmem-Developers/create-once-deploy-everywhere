@@ -1,8 +1,10 @@
 var access_token;
 var appId = '1183338462463993';
 var appVersion = 'v14.0';
-var user_access_token = 'EAAQ0PXS0RZCkBAIO0cncmpJxZBj8IddpKMKfUNKCFzjeA0T86PaYrO2mI4L486n40DGcpOHXH2POaZAiecrZCKLOT071SCaimfCkZA1WaBAWxyuswISC7wusnhtEZBwVh9Q7SHZCXaZAzkXczvgqULJj8BmzCGwEiHQwE2HcfpURfjZAdrWPniWE0RMoxcbPIQcD8TVbZBieLoa7HWjhYn2Tik7JTeCWrgI0vT6sEPKKXfeZC4LzFednqfv'
-var page_access_token ='EAAQ0PXS0RZCkBAPE9NbeQ0ZC4d7iML6VUCGlY6YtXLrBIfVaYOPG1mVZBWqTaykBVmmVZCsgaXlUAPDxnfrKk4uxHPPOcLE45hP3T4ZChIZCFQA5tYIZAhTvEF3EkUjZADvibs9JqxWPXiMvgGLLEhcMba2PjZA02r5LQ3rMWjnymrZChNLnUtMfxi0GSG4PzKBz10TpGusOKBOwZDZD';
+var user_access_token =
+  'EAAQ0PXS0RZCkBANA0RVDSE7q0Vd4SrADLNNLZAyNdrtWVkQ32G38zU59szYstuYxOTaEQKt9lYO6k1nt40WpZAC4P8jriDlPsiXd5xfbmZATbd2eJZB2A43Xi6dpYPsHHZC6v8sjxHlbvSwUm90HjEJ2usDfkbjTbpsgxXStiPqkFRACvkEeWj85zw7ji8h7ivs4DBwR75Pk1X8ld07Gb5ZC0LlPYUkFdlXQlGZBAHMgU3ZCk7GkcyjrN';
+var page_access_token =
+  'EAAQ0PXS0RZCkBAGleIVYmpKoBjNsDoTtCxlspgrwaL6C9BcYrg3vcc2sjEPEiM1IcnBcx2EhegtWoxhb4I21PpvxffdYpBTslOmZB0SfPZBnpyd8QWWRAgFmVsQLBnZCySCIeVHwIXU7swNZAhmOEHrIYW17u97hdhYFSLT7jUZA0Hpu503F0j6002TcoBOp7kjPY7bAF8gbObdh7A8ZCHx';
 var pageId = '100204642759429';
 var instagramId = '17841452089021486';
 
@@ -82,6 +84,9 @@ function postToFbPage() {
 
       function (response) {
         console.log(response);
+        document.getElementById(
+          'facebookPublishResponse'
+        ).innerHTML += `<li>page - ${JSON.stringify(response)} </li>\n`;
       }
     );
   } else {
@@ -103,12 +108,15 @@ function postToFbPage() {
 
       function (response) {
         console.log(response);
+        document.getElementById(
+          'facebookPublishResponse'
+        ).innerHTML += `<li>page - ${JSON.stringify(response)} </li>\n`;
       }
     );
   }
 }
 
-function postImages() {
+function uploadImages() {
   var imageArr = [];
   var doc = document.getElementById('imageInput');
   var images = doc.getElementsByClassName('images_url');
@@ -133,22 +141,72 @@ function postImages() {
         document.getElementById(
           'uploadedFacebookImageId'
         ).innerHTML += `<li>${JSON.stringify(response)} </li>\n`;
-        // Insert your code here
       }
     );
 
     //uploading to instagram
+
     FB.api(
       `/${instagramId}/media`,
       'POST',
       {
-        image_url:
-          'https://8b52-196-189-29-226.ngrok.io/reference/download.jpeg',
-        access_token: `${user_access_token}`
+        image_url: imageurl,
+        is_carousel_item: 'true',
+        access_token: `${user_access_token}`,
       },
       function (response) {
         console.log(response);
+        document.getElementById(
+          'uploadedInstagramImageId'
+        ).innerHTML += `<li>${JSON.stringify(response)} </li>\n`;
       }
     );
   });
+}
+
+function createImageContainer() {
+  var imageArr = [];
+  var doc = document.getElementById('igImagesContainer');
+  var images = doc.getElementsByClassName('images_url');
+
+  for (i = 0; i < images.length; i++) {
+    imageArr.push(images[i].value);
+  }
+
+  // imageArr.forEach((imageurl) => {
+  //   //create container
+  // });
+
+  FB.api(
+    `/${instagramId}/media`,
+    'POST',
+    { media_type: 'CAROUSEL', children: imageArr },
+    function (response) {
+      console.log(response)
+      document.getElementById(
+        'containerCreationResponse'
+      ).innerHTML += `<li>${JSON.stringify(response)} </li>\n`;
+      
+      // Insert your code here
+    }
+  );
+}
+
+function postToInsta(){
+
+  var containerId = document.getElementById('imgContainerId').value
+
+  FB.api(
+    `/${instagramId}/media_publish`,
+    'POST',
+    {"creation_id":containerId},
+    function(response) {
+      console.log(response)
+      document.getElementById(
+        'instagramPublishResponse'
+      ).innerHTML += `<li>instagram - ${JSON.stringify(response)} </li>\n`;
+      
+        // Insert your code here
+    }
+  );
 }
