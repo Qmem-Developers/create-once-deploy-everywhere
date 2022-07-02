@@ -2,9 +2,9 @@ var access_token;
 var appId = '1183338462463993';
 var appVersion = 'v14.0';
 var user_access_token =
-  'EAAQ0PXS0RZCkBANA0RVDSE7q0Vd4SrADLNNLZAyNdrtWVkQ32G38zU59szYstuYxOTaEQKt9lYO6k1nt40WpZAC4P8jriDlPsiXd5xfbmZATbd2eJZB2A43Xi6dpYPsHHZC6v8sjxHlbvSwUm90HjEJ2usDfkbjTbpsgxXStiPqkFRACvkEeWj85zw7ji8h7ivs4DBwR75Pk1X8ld07Gb5ZC0LlPYUkFdlXQlGZBAHMgU3ZCk7GkcyjrN';
+  'EAAQ0PXS0RZCkBAIjR5w5d2jThO8bxxKkHLqU8zxKO2h1uBZBdQdWOa0KAsXUeNGSYLRre0RDZAkPx3Fi9GYWkgZBgXzIBQVA5n5jTNBAE7dPZCvxZBzJK4uDG64oztB7N90PibsRDdoZAHPM5Wprg6HZAXoIZBFVQORBI8Eyml0eqBydMlyZC3ZBJJqWegqPUVlNGIgjnQFWL4Pi41Weo4L4D1VjdZCuW9ZC8NmqP98XzKDXwdZBCCn2nQJDOt';
 var page_access_token =
-  'EAAQ0PXS0RZCkBAGleIVYmpKoBjNsDoTtCxlspgrwaL6C9BcYrg3vcc2sjEPEiM1IcnBcx2EhegtWoxhb4I21PpvxffdYpBTslOmZB0SfPZBnpyd8QWWRAgFmVsQLBnZCySCIeVHwIXU7swNZAhmOEHrIYW17u97hdhYFSLT7jUZA0Hpu503F0j6002TcoBOp7kjPY7bAF8gbObdh7A8ZCHx';
+  'EAAQ0PXS0RZCkBAFLSjZA1YT1PYFvcGzbMoQVj8SylMGZCoGwZCPi4zHi7jfjKtXJ9d3ZAAvCfhvODbAKdCQra7naZAl8fD0Og4HFwkHD7spkSSpPNlJm7wHdiLkcQLqDrSijTM4enPfvKUKSesQSmwG4oqMP7YJkBXZCRlCv3SmuYJintYZAlpZB2H4k6kCrRigmMwOuO0d7yZBVlYlyTWTHgT';
 var pageId = '100204642759429';
 var instagramId = '17841452089021486';
 
@@ -180,7 +180,9 @@ function createImageContainer() {
   FB.api(
     `/${instagramId}/media`,
     'POST',
-    { media_type: 'CAROUSEL', children: imageArr },
+    { media_type: 'CAROUSEL', 
+    caption : document.getElementById('igDescription').value,
+    children: imageArr },
     function (response) {
       console.log(response)
       document.getElementById(

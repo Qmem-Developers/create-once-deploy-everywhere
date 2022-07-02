@@ -71,6 +71,8 @@
       <label for='image_url'>Image Id : </label>
       <input type='text' id='image_url' class='images_url'>
     </div>
+    <label for="igDescription">Description : <sup class="text-danger h6"> *instagram only</sup></label>
+    <input type="text" name="" id="igDescription">
     <input type="button" value="create container" onclick="createImageContainer()">
   </div>
   <br>
@@ -102,7 +104,7 @@
 
     <br>
     <br>
-    <label for="description">Description : </label>
+    <label for="description">Description : <sup class="text-danger h6"> *facebook only</sup></label>
     <input type="text" name="" id="description">
     <br>
     <br>
@@ -130,14 +132,96 @@
 
   <div class="h1 text-center">Edit Post</div>
 
+  <!-- Edit post -->
+  <div class="container-fluid bg-info">
+    <h4 class="h2">Publish</h4>
+    <div id="facebookImagesForEdit">
+      <div class="imageField">
+        <h4>facebook</h4>
+        <label for="facebookPostId">post id</label>
+        <input type="text" id="facebookPostId">
+        <br>
+        <label for='image_url'>Image Id : <span class="text-danger">**not functional**</span> </label>
+        <input type='text' id='image_urlEdit' class="image_urlEdit">
+        <br>
 
+      </div>
+    </div>
+    <br>
+    <div class="">
+      <h4>instagram</h4>
+      <label for="instagramPostId">post id</label>
+      <input type="text" id="instagramPostId">
+      <br>
+      <label for='imgContainerIdEdit'>Container Id : </label>
+      <input type='text' id='imgContainerIdEdit'>
+      <br>
+
+    </div>
+
+    <br>
+    <br>
+    <label for="descriptionEdit">Description : </label>
+    <input type="text" name="" id="descriptionEdit">
+    <br>
+    <br>
+    <div>Edit in : </div>
+    <input type="button" value="facebook page" onclick="editInFbPage()">
+    <input type="button" value="facebook group">
+    <input type="button" value="instagram" onclick="editInInsta()">
+    <input type="button" value="telegram">
+  </div>
+
+  <br>
+  <!-- Edit response display -->
+  <div id="editResponse" class="container-fluid bg-info">
+    <div class="h2">Edit response</div>
+    <div id="facebookEditResponse">
+      <h4>facebook</h4>
+
+    </div>
+    <br>
+    <div id="instagramEditResponse">
+      <h4>instagram</h4>
+    </div>
+  </div>
+  <br>
+
+  <!-- Delete post -->
   <div class="h1 text-center">Delete Post</div>
+  <div class="container-fluid bg-info">
+    <div class="imageField">
+      <h4>facebook</h4>
+      <label for="facebookPostIdforDelete">post id</label>
+      <input type="text" id="facebookPostIdforDelete">
+      <br>
+      <div>Delete from : </div>
+      <input type="button" value="facebook page" onclick="deleteFromFbPage()">
+
+
+    </div>
+  </div>
+
+  <!-- Delete response display -->
+  <div id="editResponse" class="container-fluid bg-info">
+    <div class="h2">Delete response</div>
+    <div id="facebookDeleteResponse">
+      <h4>facebook</h4>
+
+    </div>
+    <br>
+    <div id="instagramDeleteResponse">
+      <h4>instagram</h4>
+    </div>
+  </div>
 
 
   <!-- Load the JS SDK asynchronously -->
   <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
 
   <script src="ui.js"></script>
+  <script src="edit.js"></script>
+  <script src="datasource.js"></script>
 
 
 </body>
