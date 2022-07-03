@@ -26,16 +26,60 @@
   </div>
   <br>
 
-  <!-- login -->
-  <div class="container-fluid bg-info text-center">
-    <!-- The JS SDK Login Button -->
+  <!-- login button pre-made-->
+  <!-- <div class="container-fluid bg-info text-center">
+     The JS SDK Login Button **comment**
     <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
     </fb:login-button>
 
     <div id="status">
     </div>
+  </div>
+  <br> -->
+
+
+  <!-- login button -->
+  <div class="container-fluid bg-info text-center">
+    <button onclick="login()">Login</button>
+    <button onclick="checkPermissions()">Check permission</button>
+    <button onclick="checkAccounts()">Check Accounts</button>
+    <button onclick="unauthorized()">unauthorized</button>
+  </div>
+  <br>
+
+  <!-- set fields id -->
+  <div class="container-fluid bg-info">
+    <label for="pageIdInput">set page id</label>
+    <!-- <input type="button" value="set page id" onclick="setPageId()"> -->
+    <input type="text" id="pageIdInput">
+    <br>
+    <label for="pageAccessTokenInput">set page access token</label>
+    <!-- <input type="button" value="set page access token" onclick="setPageAccessToken()"> -->
+    <input type="text" id="pageAccessTokenInput">
+    <br>
+    <label for="userAccessToken">user access token</label>
+    <input type="text" id="userAccessToken">
+    <br>
+    <input type="button" value="set values" onclick="setValues()">
+  </div>
+  <br>
+
+  <div class="container-fluid bg-info">
+    <input type="button" value="get page connected instagram" onclick="getInstagramId()">
+    <br>
+    <br>
+    <input type="text" id="instagramIdInput">
+    <input type="button" value="set instagram Id" onclick="setInstagramId()">
+    <br>
 
   </div>
+<br>
+
+  <!-- login response -->
+  <div id="loginResponse" class="container-fluid bg-info d-flex flex-wrap">
+    <div class="h2">Login response</div>
+  </div>
+  <br>
 
   <div class="h1 text-center">Create Post</div>
   <!-- image upload -->
@@ -222,6 +266,8 @@
   <script src="ui.js"></script>
   <script src="edit.js"></script>
   <script src="datasource.js"></script>
+  <script src="create.js"></script>
+  <script src="login.js"></script>
 
 
 </body>
